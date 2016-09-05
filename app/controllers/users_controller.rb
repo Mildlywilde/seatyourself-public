@@ -25,7 +25,7 @@ class UsersController < ApplicationController
   def update
     @user = current_user
     if @user.update_attributes(user_params)
-      redirect_to @user
+      redirect_to users_url
     else
       render :edit_users_path
     end
