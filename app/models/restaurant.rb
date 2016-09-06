@@ -27,4 +27,8 @@ class Restaurant < ActiveRecord::Base
   def display_distance_to(other_restaurant)
     distance_to(other_restaurant, :km).round(3)
   end
+
+  def closes_after_opens?
+    opens_at < closes_at
+  end
 end

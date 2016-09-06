@@ -6,11 +6,16 @@ class RestaurantsController < ApplicationController
 
   def create
     @restaurant = Restaurant.new(restaurant_params)
-    if @restaurant.save
-      flash[:success] = "Restaurent Added!"
-      redirect_to restaurants_path
+    if @restaurant.closes_after_opens? == true
+      if @restaurant.save
+        flash[:success] = "Restaurent Added!"
+        redirect_to restaurants_path
+      else
+        flash[:alert] = "Sorry, restaurant was not added."
+        render 'new'
+      end
     else
-      flash[:alert] = "Sorry, restaurant was not added."
+      flash[:alert] = "Must close after opening"
       render 'new'
     end
   end
