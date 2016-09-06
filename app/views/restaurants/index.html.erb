@@ -23,7 +23,7 @@
   <%= submit_tag "Go!" %>  <p id="fix-align">
   <% end %>
   <%= form_tag restaurants_path, method: :get do %>
-  <%= hidden_field :search_address, :value => Geocoder.search(request.remote_ip) %>
+  <%= hidden_field :search_address, :value => Geocoder.address(request.remote_ip) %>
   <%= submit_tag 'Use current location'  %>
   <% end %>
   <%= link_to "reset location", restaurants_url %></p>
