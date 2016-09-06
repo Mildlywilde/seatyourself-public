@@ -1,8 +1,12 @@
 <% listing.each do |reservation| %>
 <div class="media">
   <div class="media-left media-bottom">
-<%= image_tag(reservation.restaurant.image, class: "media-object reso-pic") %>    </a>
-  </div>
+  <% if reservation.restaurant.image_file_name.nil? %>
+    <img src="http://344apz3bh6di1m0sag1etg3fxyz.wpengine.netdna-cdn.com/wp-content/uploads/2010/02/beef-roast-company.gif" class="media-object reso-pic">
+  <% else %>
+    <%= image_tag(reservation.restaurant.image, class: "media-object reso-pic") %>    </a>
+  <% end %>
+    </div>
   <div class="media-body">
     <h4 class="media-heading"><%= reservation.restaurant.name %></h4>
     <p><strong>Reservation Date: </strong><%= reservation.date.strftime("%B %d, %Y") %><br/>
